@@ -1,4 +1,6 @@
 import Home from './screens/Home';
+import LogoutButton from './views/LogoutButton';
+import PostButton from './views/PostButton';
 
 class Routes {
   get(route, args) {
@@ -15,8 +17,8 @@ class Routes {
       name: "home",
       title: "SocialApp",
       component: Home,
-      leftButton: null,
-      rightButton: null,
+      leftButton: LogoutButton,
+      rightButton: PostButton,
       hideNavigationBar: false,
       statusBarStyle: "light-content"
     }
