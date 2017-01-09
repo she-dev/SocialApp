@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import React, { Component, PropTypes } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 import StyleVars from '../StyleVars';
 
 class Button extends Component {
@@ -44,5 +44,22 @@ const styles = {
     fontWeight: "400"
   }
 };
+
+Button.propTypes = {
+  onPress: PropTypes.func,
+  style: View.propTypes.style,
+  textStyle: View.propTypes.style,
+  activeOpacity: PropTypes.number,
+  enabled: PropTypes.bool,
+  children: PropTypes.string
+}
+
+Button.defaultProps = {
+  onPress: () => {},
+  style: {},
+  textStyle: {},
+  activeOpacity: 0.8,
+  enabled: true
+}
 
 export default Button;
