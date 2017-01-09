@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import Button from '../views/Button';
 import LoadingView from '../views/LoadingView';
+import Actions from '../Actions';
+import Routes from '../Routes';
 import SharedStyles from '../SharedStyles';
 import StyleVars from '../StyleVars';
 
@@ -13,6 +15,15 @@ class Home extends Component {
       loaded: false,
       failed: true
     }
+  }
+
+  componentWillMount() {
+    Actions.auth();
+  }
+
+  componentDidMount() {
+    Actions.loadUser.completed.listen(this._onLoadUserCompleted.bind(this));
+    Actions.logout.listen(this._onLogout.bind(this));
   }
 
   render() {
@@ -49,6 +60,13 @@ class Home extends Component {
     // TODO: initiate another fetch from the server
   }
 
+  _onLoadUserCompleted(user) {
+
+  }
+
+  _onLogout() {
+    this.props.replaceRoute(Routes.login());
+  }
 
 
 }
